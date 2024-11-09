@@ -88,13 +88,13 @@ Deployment specification for CodeDeploy.
 Purpose: Controls deployment process, including lifecycle event scripts.
 Setup: Place in the root directory so CodeDeploy can reference it.
 
-### 13. lambda/auto_scaling_adjustment/handler.py
+### 13. Lambda/Auto Scaling Adjustment/handler.py
 Lambda function to manage Auto Scaling configurations.
 
 Purpose: Adjusts scaling settings based on conditions.
 Setup: Deploy as a Lambda function and trigger as needed.
 
-### 14. lambda/db_maintenance/handler.py
+### 14. Lambda/DB Maintenance/handler.py
 Lambda function for RDS maintenance, like database snapshots.
 
 Purpose: Ensures database snapshots and backup routines.
@@ -115,17 +115,17 @@ Setup: Customize with specific setup instructions or dependencies.
 ## Setting Up the Project
 ### 1. Provision Infrastructure:
 
-Deploy infrastructure/cloudformation/infrastructure.yml on AWS (or terraform/main.tf if using Terraform).
+Deploy Infrastructure/CloudFormation/Infrastructure.yml on AWS (or Terraform/main.tf if using Terraform).
 
 ### 2. Configure CI/CD Pipeline:
 
 Set up CodePipeline to monitor your repository for changes.
-Link CodePipeline to CodeBuild using ci-cd/buildspec.yml for application builds.
-Set up CodeDeploy with ci-cd/appspec.yml to deploy application artifacts to EC2 instances.
+Link CodePipeline to CodeBuild using CI-CD/BuildSpec.yml for application builds.
+Set up CodeDeploy with CI-CD/AppSpec.yml to deploy application artifacts to EC2 instances.
 
 ### 3. Run GitHub Actions (Optional):
 
-Place .github/workflows/ci-cd-pipeline.yml in the .github/workflows/ directory to enable GitHub Actions.
+Place Github/Workflows/CICDPipeline.yml in the Github/Workflows/ directory to enable GitHub Actions.
 Ensure that GitHub repository secrets are configured for AWS credentials.
 
 ### 4. Deploy the Application:
@@ -134,7 +134,7 @@ CodePipeline will automatically deploy your app to EC2 instances, managed by Aut
 
 ### 5. Configure Monitoring and Maintenance:
 
-Deploy Lambda functions in lambda/ to handle auto-scaling and RDS maintenance.
+Deploy Lambda functions in Lambda/ to handle auto-scaling and RDS maintenance.
 
 ### 6. Testing and Verification:
 
