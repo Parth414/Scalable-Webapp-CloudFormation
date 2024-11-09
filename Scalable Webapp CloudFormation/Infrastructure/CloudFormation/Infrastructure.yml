@@ -1,0 +1,37 @@
+Resources:
+  MyLoadBalancer:
+    Type: AWS::ElasticLoadBalancingV2::LoadBalancer
+    Properties:
+      Name: my-load-balancer
+      Scheme: internet-facing
+      Type: application
+      SecurityGroups:
+        - sg-xxxxxx
+      Subnets:
+        - subnet-xxxx
+        - subnet-yyyy
+
+  MyAutoScalingGroup:
+    Type: AWS::AutoScaling::AutoScalingGroup
+    Properties:
+      LaunchConfigurationName: !Ref MyLaunchConfiguration
+      MinSize: "2"
+      MaxSize: "5"
+      VPCZoneIdentifier:
+        - subnet-xxxx
+        - subnet-yyyy
+      TargetGroupARNs:
+        - !Ref MyTargetGroup
+
+  MyRDSInstance:
+    Type: AWS::RDS::DBInstance
+    Properties:
+      DBInstanceIdentifier: mydb-instance
+      AllocatedStorage: "20"
+      DBInstanceClass: db.t3.micro
+      Engine: mysql
+      MasterUsername: admin
+      MasterUserPassword: password
+      MultiAZ: true
+      VPCSecurityGroups:
+        - sg-xxxxxx
