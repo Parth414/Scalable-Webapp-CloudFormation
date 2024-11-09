@@ -13,14 +13,14 @@ S3: Stores application artifacts for deployment.
 1. CodePipeline triggers the CI/CD workflow on code updates.
 2. CodeBuild builds the application, runs tests, and stores artifacts in an S3 bucket.
 3. CodeDeploy retrieves artifacts from S3 and deploys them to EC2 instances, managing zero-downtime deployments.
-4. GitHub Actions (optional) can be used to monitor and trigger the pipeline.
+4. .github Actions (optional) can be used to monitor and trigger the pipeline.
 
 ## File-by-File Setup Guide
-### 1. Github/Workflows/CICDPipeline.yml
-GitHub Actions workflow file to trigger CI/CD on pushes to the main branch.
+### 1. .github/workflows/CICDPipeline.yml
+.github Actions workflow file to trigger CI/CD on pushes to the main branch.
 
 Purpose: Defines steps to install dependencies, run tests, build, and upload to S3.
-Setup: Place in Github/Workflows/ to enable automated pipeline on GitHub.
+Setup: Place in .github/workflows/ to enable automated pipeline on .github.
 
 ### 2. Infrastructure/CloudFormation/Infrastructure.yml
 CloudFormation template to provision AWS resources (VPC, EC2, RDS, ASG, ELB).
@@ -123,10 +123,10 @@ Set up CodePipeline to monitor your repository for changes.
 Link CodePipeline to CodeBuild using CI-CD/BuildSpec.yml for application builds.
 Set up CodeDeploy with CI-CD/AppSpec.yml to deploy application artifacts to EC2 instances.
 
-### 3. Run GitHub Actions (Optional):
+### 3. Run .github Actions (Optional):
 
-Place Github/Workflows/CICDPipeline.yml in the Github/Workflows/ directory to enable GitHub Actions.
-Ensure that GitHub repository secrets are configured for AWS credentials.
+Place .github/workflows/CICDPipeline.yml in the .github/workflows/ directory to enable .github Actions.
+Ensure that .github repository secrets are configured for AWS credentials.
 
 ### 4. Deploy the Application:
 
